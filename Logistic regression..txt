@@ -1,0 +1,45 @@
+Logistic regression is a type of regression analysis used for predicting the probability of a binary outcome (i.e., a dependent variable with two possible outcomes). It's commonly used in classification problems where the dependent variable is categorical. Despite its name, logistic regression is a classification algorithm rather than a regression algorithm.
+
+The logistic regression model uses the logistic function (also known as the sigmoid function) to model the relationship between the independent variables and the probability of the binary outcome. The logistic function is defined as:
+
+f(x) = 1/1+e to the power of (-x)
+
+Where:
+
+f(x) is the output (probability of the event occurring),
+x is the linear combination of the independent variables and their coefficients.
+
+
+The logistic regression model calculates the log-odds (logarithm of the odds) of the probability of the event occurring as a linear combination of the independent variables. Mathematically, the logistic regression model can be represented as:
+Here's an example of logistic regression in Python using scikit-learn:
+
+
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+import matplotlib.pyplot as plt
+
+# Sample data
+X = np.array([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]])
+y = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1])  # Binary outcome (0 or 1)
+
+# Create logistic regression model
+model = LogisticRegression()
+
+# Fit the model to the data
+model.fit(X, y)
+
+# Predict probabilities
+probabilities = model.predict_proba(X)[:, 1]  # Probability of class 1
+
+# Plot the data points and the logistic curve
+plt.scatter(X, y, color='blue')
+plt.plot(X, probabilities, color='red')
+plt.xlabel('X')
+plt.ylabel('Probability of Class 1')
+plt.title('Logistic Regression Example')
+plt.show()
+
+In this example, we have ten data points where 
+Xrepresents the independent variable and y represents the binary outcome (0 or 1). We fit a logistic regression model to this data using scikit-learn's LogisticRegression class and plot the logistic curve representing the probability of class 1.​
+ 
+​
